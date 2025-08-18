@@ -1,0 +1,5 @@
+*.lock.*
+*.terraform
+*.tfstate*
+*.pem
+*credentials.txt

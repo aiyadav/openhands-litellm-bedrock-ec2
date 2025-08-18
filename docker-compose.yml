@@ -1,0 +1,36 @@
+services:
+  openhands-app:
+    image: ${openhands_image}
+    container_name: openhands-app
+    pull_policy: always
+    stdin_open: true
+    tty: true
+    environment:
+      - SANDBOX_RUNTIME_CONTAINER_IMAGE=${openhands_runtime_image}
+      - LOG_ALL_EVENTS=true
+      - CUSTOM_LLM_PROVIDER=litellm_proxy
+      - MODEL=Claude4
+      - BASE_URL=http://litellm
+      - API_KEY=${litellm_api_key}
+    volumes:
+      - /mnt/openhands-data/openhands:/.openhands
+      - /mnt/openhands-data/vscode-workspace:/opt/workspace
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "8150:3000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  litellm:
+    image: ${litellm_image}
+    container_name: litellm
+    volumes:
+      - ./litellm-config.yml:/app/config.yaml
+    restart: unless-stopped
+    environment:
+      - LITELLM_API_KEY=${litellm_api_key}
+      - AWS_REGION=us-east-1
+      - PORT=80
+    ports:
+      - "8250:80"
+    command: --config /app/config.yaml --detailed_debug
