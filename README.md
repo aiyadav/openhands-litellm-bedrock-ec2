@@ -44,7 +44,7 @@ Deploy OpenHands AI coding assistant on AWS EC2 with Bedrock integration.
    - A "Settings saved" message will appear confirming successful configuration
    - Complete the "Your Privacy Preferences" popup by selecting your data sharing preference
 
-7. **Launching OpenHands with LiteLLM**:
+7. **Launching OpenHands Workspace with LiteLLM**:
    - Click **Plus** on top left to start a new session
    - Choose "Launch from scratch" or connect to repository (recommended: "Launch from scratch" for testing)
    - After clicking "Launch from scratch", a new window opens showing startup sequence (takes 1-1.5 mins):
