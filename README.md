@@ -18,7 +18,7 @@ Deploy OpenHands AI coding assistant on AWS EC2 with Bedrock integration.
       Update **sso_config.ini** with your **sso_start_url** and **regions** if required:
       ```bash
       ./sso_login.sh    # Linux/Mac
-      ./sso_login.bat   # Windows PowerShell
+      .\sso_login.bat   # Windows PowerShell
       sso_login.bat     # Windows CMD
       ```
       Follow browser prompts: "Confirm and continue" → "Allow" → Close when "Request approved" appears.  
