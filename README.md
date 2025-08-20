@@ -6,17 +6,33 @@ Deploy OpenHands AI coding assistant on AWS EC2 with Bedrock integration.
 
 - Terraform installed (verify with `terraform --version`)
 - AWS Bedrock model access approved (go to AWS Bedrock Console → Model Access (left pane scroll down) → Request access for required models)
-- AWS Access Key, Secret Key, and Session Token ready
+- **For SSO Method**: AWS Username and Password ready
+- **For Manual Method**: AWS Access Key, Secret Key, and Session Token ready
 
 ## Quick Start
 
-1. **Setup credentials**:
-   ```bash
-   # Directly paste these commands in your bash shell:
-   export AWS_ACCESS_KEY_ID="your_access_key"
-   export AWS_SECRET_ACCESS_KEY="your_secret_key"
-   export AWS_SESSION_TOKEN="your_session_token"
-   ```
+1. **Setup credentials** (Choose one method):
+
+      **Method 1: SSO Login** (Recommended)
+      
+      Update **sso_config.ini** with your **sso_start_url** and **regions** if required:
+      ```bash
+      ./sso_login.sh    # Linux/Mac
+      ./sso_login.bat   # Windows PowerShell
+      sso_login.bat     # Windows CMD
+      ```
+      Follow browser prompts: "Confirm and continue" → "Allow" → Close when "Request approved" appears.  
+      Switch back to terminal - it will auto-configure AWS profiles for Terraform.
+      
+      ⚠️ **Important!**: Follow the instructions at the end to test your SSO login.
+
+      **Method 2: Manual Environment Variables**
+      ```bash
+      # Directly paste these commands in your bash shell:
+      export AWS_ACCESS_KEY_ID="your_access_key"
+      export AWS_SECRET_ACCESS_KEY="your_secret_key"
+      export AWS_SESSION_TOKEN="your_session_token"
+      ```
 
 2. **Configure**:
    ```bash
