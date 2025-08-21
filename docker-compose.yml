@@ -8,10 +8,6 @@ services:
     environment:
       - SANDBOX_RUNTIME_CONTAINER_IMAGE=${openhands_runtime_image}
       - LOG_ALL_EVENTS=true
-      - CUSTOM_LLM_PROVIDER=litellm_proxy
-      - MODEL=Claude4
-      - BASE_URL=http://litellm
-      - API_KEY=${litellm_api_key}
     volumes:
       - /mnt/openhands-data/openhands:/.openhands
       - /mnt/openhands-data/vscode-workspace:/opt/workspace
